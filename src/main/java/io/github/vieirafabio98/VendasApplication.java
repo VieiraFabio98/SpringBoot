@@ -1,6 +1,5 @@
 package io.github.vieirafabio98;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

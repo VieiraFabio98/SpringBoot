@@ -18,6 +18,7 @@ public class ClienteController {
         this.clientes = clientes;
     }
 
+    // Get Cliente
     @GetMapping("api/clientes/{id}")
     @ResponseBody
     public ResponseEntity getClienteById(@PathVariable Integer id){
@@ -25,6 +26,28 @@ public class ClienteController {
 
         if(cliente.isPresent()){
             return ResponseEntity.ok(cliente.get());
+        }
+
+        return ResponseEntity.notFound().build();
+    }
+
+    //Post Cliente
+    @PostMapping("api/clientes")
+    @ResponseBody
+    public ResponseEntity save(@RequestBody Cliente cliente){
+        Cliente clienteSave = clientes.save(cliente);
+        return ResponseEntity.ok(clienteSave);
+    }
+
+    //Delete Cliente
+    @DeleteMapping("api/clientes/{id}")
+    @ResponseBody
+    public ResponseEntity delete(@PathVariable Integer id){
+        Optional<Cliente> cliente = clientes.findById(id);
+
+        if(cliente.isPresent()){
+            clientes.deleteById(id);
+            return ResponseEntity.noContent().build();
         }
 
         return ResponseEntity.notFound().build();

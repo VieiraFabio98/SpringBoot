@@ -32,8 +32,7 @@ public class ClienteController {
     public Cliente getClienteById(@PathVariable Integer id){
         return clientes
                 .findById(id)
-                .orElseThrow(() ->
-                        new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente nao encontrado"));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente nao encontrado"));
 
     }
 
